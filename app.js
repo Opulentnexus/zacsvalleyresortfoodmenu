@@ -70,29 +70,8 @@ function renderMenu(){
 
 
 
-function displayMenu(items){
-  menuContainer.innerHTML = "";
-
-  items.forEach(item=>{
-    const div = document.createElement("div");
-    div.classList.add("card");
-
-    const imagePath = item.img.startsWith("images/")
-      ? item.img
-      : `images/${item.img}`;
-
-    div.innerHTML = `
-      <img src="${imagePath}" alt="${item.name}">
-      <div class="card-content">
-        <h3>${item.name}</h3>
-        <p>${item.category}</p>
-      </div>
-      <div class="price">₹${item.price}</div>
-    `;
-
-    menuContainer.appendChild(div);
-  });
-}
+// DISPLAY
+function displayMenu(items){ menuContainer.innerHTML = ""; items.forEach(item=>{ const div = document.createElement("div"); div.classList.add("card"); div.innerHTML = <img src="${item.img}"> <div class="card-content"> <h3>${item.name}</h3> <p>${item.category}</p> </div> <div class="price">₹${item.price}</div> ; menuContainer.appendChild(div); }); }
 
 // SEARCH EVENT
 searchInput.addEventListener("input", renderMenu);
