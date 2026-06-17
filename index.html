@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Menu</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+
+
+<!-- ANIMATED SPLASH SCREEN -->
+<div class="splash-screen" id="splashScreen">
+  <div class="splash-content">
+    <div class="splash-logo-container">
+    <div class="splash-logo">
+  <img src="LOGO.png" alt="logo">
+</div>
+    </div>
+    <h1 class="splash-title">FOOD MENU</h1>
+    <p class="splash-subtitle">Loading deliciousness!</p>
+    <div class="splash-loader"></div>
+  </div>
+</div>
+
+
+
+
+<header class="top-header">
+
+  <div class="hero-img">
+    <img src="images/nonvegclubsandwitch.jpg" alt="Restaurant">
+  </div>
+
+  <div class="header-content">
+    <h2 class="shop-name">Zacs Valley Resort</h2>
+    <p class="tagline">What do you want to eat today?</p>
+
+ <div class="search-box">
+  <div class="search-inner">
+    <input type="text" id="search" placeholder="Search food...">
+  </div>
+</div>
+</header>
+
+
+<div class="menu-wrapper">
+
+  <!-- 3 DOT BUTTON -->
+  <div class="menu-btn" onclick="toggleMenu()">⋮</div>
+
+  <!-- DROPDOWN -->
+  <div class="menu-dropdown" id="menuDropdown">
+    <a href="tel:+91">Call</a>
+    <a href="mailto:">Mail Us</a>
+  </div>
+
+</div>
+
+
+
+
+<div id="categories"></div>
+<div id="menu"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+
+
+
+<script>
+/* Disable right click */
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+/* Disable drag */
+document.addEventListener("dragstart", e => e.preventDefault());
+
+/* Disable Ctrl+S, Ctrl+U, Ctrl+Shift+I */
+document.addEventListener("keydown", function(e){
+  if (
+    (e.ctrlKey && (e.key === "s" || e.key === "u")) ||
+    (e.ctrlKey && e.shiftKey && e.key === "I")
+  ) {
+    e.preventDefault();
+  }
+});
+
+/* Block image interaction ONLY (no CSS needed) */
+document.querySelectorAll("img").forEach(img => {
+  img.setAttribute("draggable", "false");
+
+  img.addEventListener("mousedown", e => e.preventDefault());
+  img.addEventListener("contextmenu", e => e.preventDefault());
+});
+</script>
+
+
+
+<script>
+function toggleMenu(){
+  const menu = document.getElementById("menuDropdown");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+// close when clicking outside
+document.addEventListener("click", function(e){
+  if(!e.target.closest(".menu-wrapper")){
+    document.getElementById("menuDropdown").style.display = "none";
+  }
+});
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
